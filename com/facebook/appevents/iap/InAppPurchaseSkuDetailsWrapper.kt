@@ -1,0 +1,95 @@
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+package com.facebook.appevents.iap
+
+import android.support.annotation.RestrictTo
+import com.facebook.appevents.iap.InAppPurchaseUtils.getClass
+import com.facebook.appevents.iap.InAppPurchaseUtils.getMethod
+import com.facebook.appevents.iap.InAppPurchaseUtils.invokeMethod
+import java.lang.reflect.Method
+import java.util.concurrent.atomic.AtomicBoolean
+
+//@AutoHandleExceptions
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+class InAppPurchaseSkuDetailsWrapper(
+    val skuDetailsParamsClazz: Class<*>,
+    private val builderClazz: Class<*>,
+    private val newBuilderMethod: Method,
+    private val setTypeMethod: Method,
+    private val setSkusListMethod: Method,
+    private val buildMethod: Method
+) {
+  fun getSkuDetailsParams(skuType: String?, skuIDs: List<String?>?): Any? {
+    // 1. newBuilder()
+    var builder: Any? = invokeMethod(skuDetailsParamsClazz, newBuilderMethod, null) ?: return null
+
+    // 2. setType(skuType)
+    builder = invokeMethod(builderClazz, setTypeMethod, builder, skuType)
+    if (builder == null) {
+      return null
+    }
+
+    // 3. setSkusList(skuIDs)
+    builder = invokeMethod(builderClazz, setSkusListMethod, builder, skuIDs)
+    return if (builder == null) {
+      null
+    } else invokeMethod(builderClazz, buildMethod, builder)
+
+    // 4. build()
+  }
+
+  companion object {
+    private var instance: InAppPurchaseSkuDetailsWrapper? = null
+    private val initialized = AtomicBoolean(false)
+    private const val CLASSNAME_SKU_DETAILS_PARAMS =
+        "com.android.billingclient.api.SkuDetailsParams"
+    private const val CLASSNAME_SKU_DETAILS_PARAMS_BUILDER =
+        "com.android.billingclient.api.SkuDetailsParams\$Builder"
+    private const val METHOD_NEW_BUILDER = "newBuilder"
+    private const val METHOD_SET_TYPE = "setType"
+    private const val METHOD_SET_SKU_LIST = "setSkusList"
+    private const val METHOD_BUILD = "build"
+
+    @JvmStatic
+    fun getOrCreateInstance(): InAppPurchaseSkuDetailsWrapper? {
+      if (initialized.get()) {
+        return instance
+      }
+      createInstance()
+      initialized.set(true)
+      return instance
+    }
+
+    private fun createInstance() {
+      val skuDetailsParamsClazz = getClass(CLASSNAME_SKU_DETAILS_PARAMS)
+      val builderClazz = getClass(CLASSNAME_SKU_DETAILS_PARAMS_BUILDER)
+      if (skuDetailsParamsClazz == null || builderClazz == null) {
+        return
+      }
+      val newBuilderMethod = getMethod(skuDetailsParamsClazz, METHOD_NEW_BUILDER)
+      val setTypeMethod = getMethod(builderClazz, METHOD_SET_TYPE, String::class.java)
+      val setSkusListMethod = getMethod(builderClazz, METHOD_SET_SKU_LIST, MutableList::class.java)
+      val buildMethod = getMethod(builderClazz, METHOD_BUILD)
+      if (newBuilderMethod == null ||
+          setTypeMethod == null ||
+          setSkusListMethod == null ||
+          buildMethod == null) {
+        return
+      }
+      instance =
+          InAppPurchaseSkuDetailsWrapper(
+              skuDetailsParamsClazz,
+              builderClazz,
+              newBuilderMethod,
+              setTypeMethod,
+              setSkusListMethod,
+              buildMethod)
+    }
+  }
+}
