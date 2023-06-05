@@ -6,12 +6,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.iap
+package com.twok.nerve
 
 import android.content.pm.PackageManager
 import android.support.annotation.RestrictTo
 import android.util.Log
-import com.facebook.appevents.iap.NerveSDK.getApplicationContext
+import com.twok.nerve.NerveSDK.getApplicationContext
 import java.util.concurrent.atomic.AtomicBoolean
 
 //@AutoHandleExceptions

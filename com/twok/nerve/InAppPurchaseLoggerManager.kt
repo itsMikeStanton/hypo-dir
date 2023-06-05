@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.iap
+package com.twok.nerve
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,7 +14,7 @@ import android.support.annotation.RestrictTo
 import android.support.annotation.VisibleForTesting
 import android.util.Log
 
-import com.facebook.appevents.iap.NerveSDK.getApplicationContext
+import com.twok.nerve.NerveSDK.getApplicationContext
 
 import java.lang.Exception
 import java.util.HashMap
@@ -22,26 +22,12 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArraySet
 import org.json.JSONObject
 
-import com.amplitude.api.Amplitude
-import com.amplitude.api.AmplitudeClient
-import org.json.JSONException
-
 import com.leanplum.Leanplum
 // For tracking user sessions.
 
 
 // For tracking user sessions.
 // For tracking user sessions.
-import com.leanplum.LeanplumActivityHelper
-
-
-import com.leanplum.annotations.Parser
-
-import com.leanplum.annotations.Variable
-
-import com.leanplum.callbacks.StartCallback
-
-import com.leanplum.callbacks.VariablesChangedCallback
 
 
 //@AutoHandleExceptions

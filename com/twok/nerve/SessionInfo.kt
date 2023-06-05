@@ -6,11 +6,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.internal
+package com.twok.nerve
 
 import android.preference.PreferenceManager
 
-import com.facebook.appevents.iap.NerveSDK.getApplicationContext
+import com.twok.nerve.NerveSDK.getApplicationContext
 import java.util.UUID
 
 internal class SessionInfo

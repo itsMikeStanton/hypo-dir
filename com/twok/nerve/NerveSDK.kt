@@ -1,9 +1,9 @@
-package com.facebook.appevents.iap
+package com.twok.nerve
 
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import com.facebook.appevents.internal.ActivityLifecycleTracker.startTracking
+import com.twok.nerve.ActivityLifecycleTracker.startTracking
 
 
 object NerveSDK {

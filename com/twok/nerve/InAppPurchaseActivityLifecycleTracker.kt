@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.iap
+package com.twok.nerve
 
 import android.app.Activity
 import android.app.Application
@@ -18,9 +18,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 
-import com.facebook.appevents.iap.InAppPurchaseEventManager
-import com.facebook.appevents.iap.InAppPurchaseUtils
-import com.facebook.appevents.iap.NerveSDK.getApplicationContext
+import com.twok.nerve.NerveSDK.getApplicationContext
 //import com.facebook.appevents.internal.AutomaticAnalyticsLogger.isImplicitPurchaseLoggingEnabled
 //import com.facebook.appevents.internal.AutomaticAnalyticsLogger.logPurchase
 import java.util.concurrent.atomic.AtomicBoolean

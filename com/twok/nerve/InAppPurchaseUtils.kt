@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.iap
+package com.twok.nerve
 
 import android.content.Context
 import java.lang.reflect.InvocationTargetException

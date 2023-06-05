@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.internal
+package com.twok.nerve
 
 object Constants {
   const val LOG_TIME_APP_EVENT_KEY = "_logTime"

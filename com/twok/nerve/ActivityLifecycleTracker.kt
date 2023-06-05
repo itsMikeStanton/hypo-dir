@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.internal
+package com.twok.nerve
 
 import android.app.Activity
 import android.app.Application
@@ -14,11 +14,12 @@ import android.os.Bundle
 import android.support.annotation.RestrictTo
 import android.util.Log
 
-import com.facebook.appevents.iap.InAppPurchaseManager
-import com.facebook.appevents.iap.NerveSDK.getActivityName
-import com.facebook.appevents.internal.Constants.getDefaultAppEventsSessionTimeoutInSeconds
-import com.facebook.appevents.internal.SessionInfo.Companion.clearSavedSessionFromDisk
-import com.facebook.appevents.internal.SessionInfo.Companion.getStoredSessionInfo
+import com.twok.nerve.InAppPurchaseManager
+import com.twok.nerve.NerveSDK.getActivityName
+import com.twok.nerve.SessionInfo
+import com.twok.nerve.Constants.getDefaultAppEventsSessionTimeoutInSeconds
+import com.twok.nerve.SessionInfo.Companion.clearSavedSessionFromDisk
+import com.twok.nerve.SessionInfo.Companion.getStoredSessionInfo
 
 
 import java.lang.ref.WeakReference

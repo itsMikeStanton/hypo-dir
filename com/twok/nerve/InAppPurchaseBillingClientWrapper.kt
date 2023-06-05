@@ -6,15 +6,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.iap
+package com.twok.nerve
 
 import android.content.Context
 import android.support.annotation.RestrictTo
 
-import com.facebook.appevents.iap.InAppPurchaseSkuDetailsWrapper.Companion.getOrCreateInstance
-import com.facebook.appevents.iap.InAppPurchaseUtils.getClass
-import com.facebook.appevents.iap.InAppPurchaseUtils.getMethod
-import com.facebook.appevents.iap.InAppPurchaseUtils.invokeMethod
+import com.twok.nerve.InAppPurchaseSkuDetailsWrapper.Companion.getOrCreateInstance
+import com.twok.nerve.InAppPurchaseUtils.getClass
+import com.twok.nerve.InAppPurchaseUtils.getMethod
+import com.twok.nerve.InAppPurchaseUtils.invokeMethod
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy

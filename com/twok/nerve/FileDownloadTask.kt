@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.facebook.appevents.internal
+package com.twok.nerve
 /*
 import android.os.AsyncTask
 import android.support.annotation.VisibleForTesting
